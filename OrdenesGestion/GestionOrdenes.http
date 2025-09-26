@@ -1,0 +1,84 @@
+@GestionOrdenes_HostAddress = http://localhost:5111
+@token = YOUR_JWT_TOKEN_HERE
+
+### Autenticación
+POST {{GestionOrdenes_HostAddress}}/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin123"
+}
+
+### Obtener todos los estados de orden
+GET {{GestionOrdenes_HostAddress}}/api/referencedata/estados-orden
+Accept: application/json
+Authorization: Bearer {{token}}
+
+### Obtener un estado de orden específico
+GET {{GestionOrdenes_HostAddress}}/api/referencedata/estados-orden/1
+Accept: application/json
+Authorization: Bearer {{token}}
+
+### Obtener todos los tipos de activo
+GET {{GestionOrdenes_HostAddress}}/api/referencedata/tipos-activo
+Accept: application/json
+Authorization: Bearer {{token}}
+
+### Obtener un tipo de activo específico
+GET {{GestionOrdenes_HostAddress}}/api/referencedata/tipos-activo/1
+Accept: application/json
+Authorization: Bearer {{token}}
+
+### Obtener todos los activos financieros
+GET {{GestionOrdenes_HostAddress}}/api/referencedata/activos-financieros
+Accept: application/json
+Authorization: Bearer {{token}}
+
+### Obtener un activo financiero específico
+GET {{GestionOrdenes_HostAddress}}/api/referencedata/activos-financieros/1
+Accept: application/json
+Authorization: Bearer {{token}}
+
+### Obtener activos financieros por tipo
+GET {{GestionOrdenes_HostAddress}}/api/referencedata/activos-financieros/por-tipo/1
+Accept: application/json
+Authorization: Bearer {{token}}
+
+### Obtener todas las órdenes de inversión
+GET {{GestionOrdenes_HostAddress}}/api/ordenesinversion
+Accept: application/json
+Authorization: Bearer {{token}}
+
+### Obtener una orden de inversión específica
+GET {{GestionOrdenes_HostAddress}}/api/ordenesinversion/1
+Accept: application/json
+Authorization: Bearer {{token}}
+
+### Crear una nueva orden de inversión
+POST {{GestionOrdenes_HostAddress}}/api/ordenesinversion
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "cuentaId": 12345,
+  "activoId": 1,
+  "cantidad": 10,
+  "precio": 177.97,
+  "operacion": "C"
+}
+
+### Actualizar estado de una orden
+PUT {{GestionOrdenes_HostAddress}}/api/ordenesinversion/1/estado
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "estadoId": 2
+}
+
+### Eliminar una orden (solo Admin)
+DELETE {{GestionOrdenes_HostAddress}}/api/ordenesinversion/1
+Authorization: Bearer {{token}}
+
+###

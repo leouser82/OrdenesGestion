@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GestionOrdenes</name>
+    </assembly>
+    <members>
+        <member name="M:GestionOrdenes.Controllers.AuthController.Login(GestionOrdenes.DTOs.LoginDto)">
+            <summary>
+            Autentica un usuario y devuelve un token JWT
+            </summary>
+            <param name="loginDto">Credenciales de login</param>
+            <returns>Token JWT si la autenticación es exitosa</returns>
+        </member>
+        <member name="M:GestionOrdenes.Controllers.OrdenesInversionController.GetAllOrdenes">
+            <summary>
+            Obtiene todas las órdenes de inversión
+            </summary>
+            <returns>Lista de órdenes de inversión</returns>
+        </member>
+        <member name="M:GestionOrdenes.Controllers.OrdenesInversionController.TestException(System.Int32)">
+            <summary>
+            Endpoint para probar el middleware de excepciones
+            </summary>
+            <param name="tipoExcepcion">Tipo de excepción a lanzar (1-6)</param>
+            <returns>Nunca retorna, siempre lanza excepción</returns>
+        </member>
+        <member name="M:GestionOrdenes.Controllers.OrdenesInversionController.GetOrdenById(System.Int32)">
+            <summary>
+            Obtiene una orden de inversión por ID
+            </summary>
+            <param name="id">ID de la orden</param>
+            <returns>Orden de inversión</returns>
+        </member>
+        <member name="M:GestionOrdenes.Controllers.OrdenesInversionController.CreateOrden(GestionOrdenes.DTOs.CreateOrdenInversionDto)">
+            <summary>
+            Crea una nueva orden de inversión
+            </summary>
+            <param name="createDto">Datos para crear la orden</param>
+            <returns>Orden de inversión creada</returns>
+        </member>
+        <member name="M:GestionOrdenes.Controllers.OrdenesInversionController.EjecutarOrden(System.Int32)">
+            <summary>
+            Ejecutar orden de inversión (cambia estado a "Ejecutada")
+            </summary>
+            <param name="id">ID de la orden</param>
+            <returns>Orden ejecutada</returns>
+        </member>
+        <member name="M:GestionOrdenes.Controllers.OrdenesInversionController.CancelarOrden(System.Int32)">
+            <summary>
+            Cancelar orden de inversión (cambia estado a "Cancelada")
+            </summary>
+            <param name="id">ID de la orden</param>
+            <returns>Resultado de la operación</returns>
+        </member>
+        <member name="M:GestionOrdenes.Controllers.ReferenceDataController.GetEstadosOrden">
+            <summary>
+            Obtiene todos los estados de orden disponibles
+            </summary>
+            <returns>Lista de estados de orden</returns>
+        </member>
+        <member name="M:GestionOrdenes.Controllers.ReferenceDataController.GetTiposActivo">
+            <summary>
+            Obtiene todos los tipos de activo disponibles
+            </summary>
+            <returns>Lista de tipos de activo</returns>
+        </member>
+        <member name="M:GestionOrdenes.Controllers.ReferenceDataController.GetActivosFinancieros">
+            <summary>
+            Obtiene todos los activos financieros disponibles
+            </summary>
+            <returns>Lista de activos financieros</returns>
+        </member>
+        <member name="T:GestionOrdenes.Interfaces.IRepository`1">
+            <summary>
+            Interfaz genérica que abstrae el acceso a datos
+            Permite cambiar la implementación sin afectar el código cliente
+            </summary>
+        </member>
+    </members>
+</doc>

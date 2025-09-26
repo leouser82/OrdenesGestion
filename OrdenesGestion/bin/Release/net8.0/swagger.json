@@ -1,0 +1,288 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Gestión de Órdenes API",
+    "description": "API para la gestión de órdenes de inversión en activos financieros",
+    "contact": {
+      "name": "Gestión de Órdenes",
+      "email": "contacto@gestionordenes.com"
+    },
+    "version": "v1"
+  },
+  "paths": {
+    "/api/Auth/login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Autentica un usuario y devuelve un token JWT",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Credenciales de login",
+            "schema": {
+              "$ref": "#/definitions/LoginDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/health": {
+      "get": {
+        "tags": [
+          "GestionOrdenes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/OrdenesInversion": {
+      "get": {
+        "tags": [
+          "OrdenesInversion"
+        ],
+        "summary": "Obtiene todas las órdenes de inversión",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "OrdenesInversion"
+        ],
+        "summary": "Crea una nueva orden de inversión",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Datos para crear la orden",
+            "schema": {
+              "$ref": "#/definitions/CreateOrdenInversionDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/OrdenesInversion/test-exception/{tipoExcepcion}": {
+      "get": {
+        "tags": [
+          "OrdenesInversion"
+        ],
+        "summary": "Endpoint para probar el middleware de excepciones",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "tipoExcepcion",
+            "description": "Tipo de excepción a lanzar (1-6)",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/OrdenesInversion/{id}": {
+      "get": {
+        "tags": [
+          "OrdenesInversion"
+        ],
+        "summary": "Obtiene una orden de inversión por ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ID de la orden",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/OrdenesInversion/{id}/ejecutar": {
+      "put": {
+        "tags": [
+          "OrdenesInversion"
+        ],
+        "summary": "Ejecutar orden de inversión (cambia estado a \"Ejecutada\")",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ID de la orden",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/OrdenesInversion/{id}/cancelar": {
+      "delete": {
+        "tags": [
+          "OrdenesInversion"
+        ],
+        "summary": "Cancelar orden de inversión (cambia estado a \"Cancelada\")",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ID de la orden",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/ReferenceData/estados-orden": {
+      "get": {
+        "tags": [
+          "ReferenceData"
+        ],
+        "summary": "Obtiene todos los estados de orden disponibles",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/ReferenceData/tipos-activo": {
+      "get": {
+        "tags": [
+          "ReferenceData"
+        ],
+        "summary": "Obtiene todos los tipos de activo disponibles",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/ReferenceData/activos-financieros": {
+      "get": {
+        "tags": [
+          "ReferenceData"
+        ],
+        "summary": "Obtiene todos los activos financieros disponibles",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "CreateOrdenInversionDto": {
+      "required": [
+        "activoId",
+        "cantidad",
+        "cuentaId",
+        "operacion"
+      ],
+      "type": "object",
+      "properties": {
+        "cuentaId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "activoId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "cantidad": {
+          "format": "int32",
+          "maximum": 2147483647,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "operacion": {
+          "minLength": 1,
+          "pattern": "^[CV]$",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "LoginDto": {
+      "required": [
+        "password",
+        "username"
+      ],
+      "type": "object",
+      "properties": {
+        "username": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "password": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "securityDefinitions": {
+    "Bearer": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header",
+      "description": "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\""
+    }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ]
+}

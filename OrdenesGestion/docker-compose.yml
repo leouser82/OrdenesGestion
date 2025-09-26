@@ -1,0 +1,58 @@
+version: '3.8'
+
+services:
+  # Base de datos SQL Server
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: gestion-ordenes-db
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=GestionOrdenes2024!
+      - MSSQL_PID=Express
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver_data:/var/opt/mssql
+    networks:
+      - gestion-ordenes-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P GestionOrdenes2024! -Q 'SELECT 1'"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+
+  # API de Gestión de Órdenes
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: gestion-ordenes-api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:8080
+      - ConnectionStrings__DefaultConnection=Server=sqlserver,1433;Database=GestionOrdenes;User Id=sa;Password=GestionOrdenes2024!;TrustServerCertificate=True;
+    ports:
+      - "5111:8080"
+    depends_on:
+      sqlserver:
+        condition: service_healthy
+    networks:
+      - gestion-ordenes-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8080/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+volumes:
+  sqlserver_data:
+    driver: local
+
+networks:
+  gestion-ordenes-network:
+    driver: bridge
+

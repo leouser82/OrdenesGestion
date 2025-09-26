@@ -1,0 +1,53 @@
+# .dockerignore para optimizar la construcción de la imagen Docker
+
+# Directorios de compilación
+**/bin/
+**/obj/
+**/out/
+
+# Archivos de Visual Studio
+**/.vs/
+**/.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Archivos de logs
+*.log
+
+# Base de datos local
+**/*.db
+**/*.sqlite
+**/*.sqlite3
+
+# Archivos de configuración local
+**/appsettings.Development.json
+**/appsettings.Local.json
+
+# Archivos de pruebas
+**/TestResults/
+**/*Tests/
+
+# Archivos de documentación
+**/*.md
+**/docs/
+
+# Archivos de Git
+**/.git/
+**/.gitignore
+**/.gitattributes
+
+# Archivos de Node.js (si los hay)
+**/node_modules/
+**/npm-debug.log*
+
+# Archivos temporales
+**/tmp/
+**/temp/
+
+# Archivos de Docker
+**/Dockerfile*
+**/docker-compose*
+**/.dockerignore
+

@@ -1,0 +1,154 @@
+[
+  {
+    "ContainingType": "GestionOrdenes.Controllers.AuthController",
+    "Method": "Login",
+    "RelativePath": "api/Auth/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "loginDto",
+        "Type": "GestionOrdenes.DTOs.LoginDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GestionOrdenes.Controllers.OrdenesInversionController",
+    "Method": "GetAllOrdenes",
+    "RelativePath": "api/OrdenesInversion",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GestionOrdenes.Controllers.OrdenesInversionController",
+    "Method": "CreateOrden",
+    "RelativePath": "api/OrdenesInversion",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createDto",
+        "Type": "GestionOrdenes.DTOs.CreateOrdenInversionDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GestionOrdenes.Controllers.OrdenesInversionController",
+    "Method": "GetOrdenById",
+    "RelativePath": "api/OrdenesInversion/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GestionOrdenes.Controllers.OrdenesInversionController",
+    "Method": "CancelarOrden",
+    "RelativePath": "api/OrdenesInversion/{id}/cancelar",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GestionOrdenes.Controllers.OrdenesInversionController",
+    "Method": "EjecutarOrden",
+    "RelativePath": "api/OrdenesInversion/{id}/ejecutar",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GestionOrdenes.Controllers.OrdenesInversionController",
+    "Method": "TestException",
+    "RelativePath": "api/OrdenesInversion/test-exception/{tipoExcepcion}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "tipoExcepcion",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GestionOrdenes.Controllers.ReferenceDataController",
+    "Method": "GetActivosFinancieros",
+    "RelativePath": "api/ReferenceData/activos-financieros",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GestionOrdenes.Controllers.ReferenceDataController",
+    "Method": "GetEstadosOrden",
+    "RelativePath": "api/ReferenceData/estados-orden",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GestionOrdenes.Controllers.ReferenceDataController",
+    "Method": "GetTiposActivo",
+    "RelativePath": "api/ReferenceData/tipos-activo",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Program\u002B\u003C\u003Ec",
+    "Method": "\u003C\u003CMain\u003E$\u003Eb__0_7",
+    "RelativePath": "health",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  }
+]
