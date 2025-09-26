@@ -9,7 +9,7 @@ pool:
 variables:
   azureSubscription: 'FinancierosGR-Connection'   # nombre de tu Service Connection
   appName: 'GestionOrdenes'         # nombre de tu App Service
-  packagePath: '$(System.DefaultWorkingDirectory)/publish'
+  packagePath: '$(System.DefaultWorkingDirectory)/**/*.zip'
 
 steps:
 - task: UseDotNet@2

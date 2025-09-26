@@ -91,6 +91,22 @@
   },
   {
     "ContainingType": "GestionOrdenes.Controllers.OrdenesInversionController",
+    "Method": "GetAllOrdenesByNombre",
+    "RelativePath": "api/OrdenesInversion/{nombre}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "nombre",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GestionOrdenes.Controllers.OrdenesInversionController",
     "Method": "TestException",
     "RelativePath": "api/OrdenesInversion/test-exception/{tipoExcepcion}",
     "HttpMethod": "GET",

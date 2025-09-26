@@ -17,6 +17,12 @@
             </summary>
             <returns>Lista de órdenes de inversión</returns>
         </member>
+        <member name="M:GestionOrdenes.Controllers.OrdenesInversionController.GetAllOrdenesByNombre(System.String)">
+            <summary>
+            Obtiene todas las órdenes de inversión
+            </summary>
+            <returns>Lista de órdenes de inversión</returns>
+        </member>
         <member name="M:GestionOrdenes.Controllers.OrdenesInversionController.TestException(System.Int32)">
             <summary>
             Endpoint para probar el middleware de excepciones

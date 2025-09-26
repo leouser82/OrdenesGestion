@@ -29,6 +29,17 @@ namespace GestionOrdenes.Controllers
         }
 
         /// <summary>
+        /// Obtiene todas las órdenes de inversión
+        /// </summary>
+        /// <returns>Lista de órdenes de inversión</returns>
+        [HttpGet("{nombre}")]
+        public async Task<IActionResult> GetAllOrdenesByNombre(string nombre)
+        {
+            var ordenes = await _ordenService.GetAllOrdenesAsync();
+            return Ok(ordenes);
+        }
+
+        /// <summary>
         /// Endpoint para probar el middleware de excepciones
         /// </summary>
         /// <param name="tipoExcepcion">Tipo de excepción a lanzar (1-6)</param>

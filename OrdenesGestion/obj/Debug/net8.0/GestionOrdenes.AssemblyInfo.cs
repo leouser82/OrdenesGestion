@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GestionOrdenes")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f3cbf54388e94ba95c0f4048da88cb8caab217ae")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+54d4d97b1d7eecb280baab329a8d02e4e7c55797")]
 [assembly: System.Reflection.AssemblyProductAttribute("GestionOrdenes")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GestionOrdenes")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
