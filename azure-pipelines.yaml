@@ -8,7 +8,7 @@ pool:
 
 variables:
   azureSubscription: 'FinancierosGR-Connection'   # nombre de tu Service Connection
-  appName: 'gestionordenes-financierosgr'         # nombre de tu App Service
+  appName: 'GestionOrdenes'         # nombre de tu App Service
   packagePath: '$(System.DefaultWorkingDirectory)/publish'
 
 steps:
