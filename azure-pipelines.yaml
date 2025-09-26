@@ -1,0 +1,43 @@
+trigger:
+  branches:
+    include:
+      - main
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  azureSubscription: 'FinancierosGR-Connection'   # nombre de tu Service Connection
+  appName: 'gestionordenes-financierosgr'         # nombre de tu App Service
+  packagePath: '$(System.DefaultWorkingDirectory)/publish'
+
+steps:
+- task: UseDotNet@2
+  inputs:
+    packageType: 'sdk'
+    version: '8.0.x'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'restore'
+    projects: '**/*.csproj'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: '**/*.csproj'
+    arguments: '--configuration Release'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'publish'
+    publishWebProjects: true
+    arguments: '--configuration Release --output $(packagePath)'
+    zipAfterPublish: true
+
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: '$(azureSubscription)'
+    appType: 'webApp'
+    appName: '$(appName)'
+    package: '$(packagePath)/**/*.zip'
