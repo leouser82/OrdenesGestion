@@ -1,1 +1,11 @@
-{"Version":1,"Hash":"LPcl39b4FM1F21zz/vUAzpf0DFlluRD1NMSga1piWnI=","Source":"GestionOrdenes","BasePath":"/","Mode":"Root","ManifestType":"Build","ReferencedProjectsConfiguration":[],"DiscoveryPatterns":[],"Assets":[],"Endpoints":[]}
+{
+  "Version": 1,
+  "Hash": "2xvghc6Mc0KHiZOjNpigLhxZ8RMt9JiOhslZVqiEkbA=",
+  "Source": "GestionOrdenes",
+  "BasePath": "_content/GestionOrdenes",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
