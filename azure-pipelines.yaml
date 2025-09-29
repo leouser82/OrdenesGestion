@@ -1,4 +1,4 @@
-trigger:
+pr:
   branches:
     include:
       - main
@@ -7,11 +7,13 @@ pool:
   name: LeonelAgent
 
 variables:
-  azureSubscription: 'FinancierosGR-Connection'   # nombre de tu Service Connection
-  appName: 'GestionOrdenes'         # nombre de tu App Service
-  packagePath: '$(System.DefaultWorkingDirectory)/**/*.zip'
+  azureSubscription: 'FinancierosGR-Connection'
+  appName: 'GestionOrdenes'
+  packagePath: '$(Build.ArtifactStagingDirectory)/publish'
 
 steps:
+- checkout: self  # ✅ AGREGAR ESTA LÍNEA AL INICIO
+  displayName: 'Checkout source code'
 - task: UseDotNet@2
   inputs:
     packageType: 'sdk'
@@ -35,9 +37,15 @@ steps:
     arguments: '--configuration Release --output $(packagePath)'
     zipAfterPublish: true
 
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathToPublish: '$(packagePath)'
+    artifactName: 'drop'
+    publishLocation: 'Container'
+
 - task: AzureWebApp@1
   inputs:
     azureSubscription: '$(azureSubscription)'
     appType: 'webApp'
     appName: '$(appName)'
-    package: '$(packagePath)/**/*.zip'
+    package: '$(Pipeline.Workspace)/a/publish/*.zip'
