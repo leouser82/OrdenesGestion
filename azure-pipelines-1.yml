@@ -1,0 +1,26 @@
+# azure-pipelines.deploy.yml
+trigger:
+  branches:
+    include:
+      - main
+
+pool:
+  name: LeonelAgent
+
+variables:
+  azureSubscription: 'FinancierosGR-Connection'
+  appName: 'GestionOrdenes'
+
+steps:
+- checkout: self
+  displayName: 'Checkout source code'
+
+- download: current
+  artifact: drop
+
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: '$(azureSubscription)'
+    appType: 'webApp'
+    appName: '$(appName)'
+    package: '$(Pipeline.Workspace)/a/publish/*.zip'
