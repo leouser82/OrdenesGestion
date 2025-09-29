@@ -25,7 +25,7 @@ namespace GestionOrdenes.Controllers
         public async Task<IActionResult> GetAllOrdenes()
         {
             var ordenes = await _ordenService.GetAllOrdenesAsync();
-            return Ok(ordenes);
+            return Ok(ordenes);  
         }
 
         /// <summary>
