@@ -35,7 +35,7 @@ namespace GestionOrdenes.Controllers
         [HttpGet("{nombre}")]
         public async Task<IActionResult> GetAllOrdenesByNombre(string nombre)
         {
-            var ordenes = await _ordenService.GetAllOrdenesAsync();
+            var ordenes = await _ordenService.GetAllOrdenesAsync(); 
             return Ok(ordenes);
         }
 
