@@ -1,3 +1,4 @@
+# azure-pipelines.validate.yml
 pr:
   branches:
     include:
@@ -7,13 +8,12 @@ pool:
   name: LeonelAgent
 
 variables:
-  azureSubscription: 'FinancierosGR-Connection'
-  appName: 'GestionOrdenes'
   packagePath: '$(Build.ArtifactStagingDirectory)/publish'
 
 steps:
-- checkout: self  # ✅ AGREGAR ESTA LÍNEA AL INICIO
+- checkout: self
   displayName: 'Checkout source code'
+
 - task: UseDotNet@2
   inputs:
     packageType: 'sdk'
@@ -42,10 +42,3 @@ steps:
     pathToPublish: '$(packagePath)'
     artifactName: 'drop'
     publishLocation: 'Container'
-
-- task: AzureWebApp@1
-  inputs:
-    azureSubscription: '$(azureSubscription)'
-    appType: 'webApp'
-    appName: '$(appName)'
-    package: '$(Pipeline.Workspace)/a/publish/*.zip'
