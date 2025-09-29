@@ -1,4 +1,3 @@
-# azure-pipelines.deploy.yml
 trigger:
   branches:
     include:
@@ -15,12 +14,16 @@ steps:
 - checkout: self
   displayName: 'Checkout source code'
 
-- download: current
-  artifact: drop
+- task: DownloadBuildArtifacts@0
+  inputs:
+    buildType: 'current'
+    downloadType: 'single'
+    artifactName: 'drop'
+    downloadPath: '$(Pipeline.Workspace)'
 
 - task: AzureWebApp@1
   inputs:
     azureSubscription: '$(azureSubscription)'
     appType: 'webApp'
     appName: '$(appName)'
-    package: '$(Pipeline.Workspace)/a/publish/*.zip'
+    package: '$(Pipeline.Workspace)/drop/publish/**/*.zip'
