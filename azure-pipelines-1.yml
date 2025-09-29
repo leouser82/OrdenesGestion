@@ -14,16 +14,16 @@ steps:
 - checkout: self
   displayName: 'Checkout source code'
 
-- task: DownloadBuildArtifacts@0
+- task: DownloadPipelineArtifact@2
   inputs:
-    buildType: 'current'
-    downloadType: 'single'
-    artifactName: 'drop'
-    downloadPath: '$(Pipeline.Workspace)'
+    artifact: drop
+    path: '$(Pipeline.Workspace)/drop'
+    buildType: 'latest'
+    targetPath: '$(Pipeline.Workspace)/drop'
 
 - task: AzureWebApp@1
   inputs:
     azureSubscription: '$(azureSubscription)'
     appType: 'webApp'
     appName: '$(appName)'
-    package: '$(Pipeline.Workspace)/a/publish/**/*.zip'
+    package: '$(Pipeline.Workspace)/drop/publish/**/*.zip'
