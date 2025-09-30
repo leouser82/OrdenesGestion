@@ -54,6 +54,17 @@ namespace GestionOrdenes.Controllers
         /// Obtiene todas las órdenes de inversión
         /// </summary>
         /// <returns>Lista de órdenes de inversión</returns>
+        [HttpGet("{valor}")]
+        public async Task<IActionResult> GetAllOrdenesByValor(string valor)
+        {
+            var ordenes = await _ordenService.GetAllOrdenesAsync();
+            return Ok(ordenes); //ddddddddsscxx  
+        }
+
+        /// <summary>
+        /// Obtiene todas las órdenes de inversión
+        /// </summary>
+        /// <returns>Lista de órdenes de inversión</returns>
         [HttpGet("{monto}")]
         public async Task<IActionResult> GetAllOrdenesByMonto(string monto)
         {
