@@ -60,5 +60,5 @@ steps:
     azureSubscription: '$(azureSubscription)'
     appType: 'webApp'
     appName: '$(appName)'
-    package: '$(Pipeline.Workspace)/drop/publish/**/*.zip'
+    package: '$(Pipeline.Workspace)/drop/**/*.zip'
   displayName: 'Desplegar a Azure App Service'
