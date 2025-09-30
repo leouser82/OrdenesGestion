@@ -47,7 +47,7 @@ namespace GestionOrdenes.Controllers
         public async Task<IActionResult> GetAllOrdenesByTipo(string tipo)
         {
             var ordenes = await _ordenService.GetAllOrdenesAsync();
-            return Ok(ordenes); //ddddddddsscxx  
+            return Ok(ordenes); //ddddddddsscxx  hhhhh
         }
 
         /// <summary>
